@@ -14,12 +14,12 @@ async function main() {
   // await hre.run('compile');
 
   // We get the contract to deploy
-  const Counter = await ethers.getContractFactory("Counter");
-  const counter = await Counter.deploy();
+  const Aggregator = await ethers.getContractFactory("Aggregator");
+  const aggregator = await Aggregator.deploy();
 
-  await counter.deployed();
+  await aggregator.deployed();
 
-  console.log("Counter deployed to:", counter.address);
+  console.log("Aggregator deployed to:", aggregator.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
