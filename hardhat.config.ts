@@ -32,7 +32,7 @@ const config: HardhatUserConfig = {
         blockNumber: 13780385,
       },
       mining: {
-        // auto: true,
+        // Comment out all the mining config when testing
         interval: 5000,
         mempool: {
           order: "fifo",

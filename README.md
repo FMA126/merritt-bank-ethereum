@@ -23,6 +23,7 @@ This project is a simple decentrialized app where a user can deposit DAI into ou
     - > $ npx hardhat run --network localhost scripts/deploy.ts
 
 ## Testing
+Go to hardhat.config.ts and comment out the mining params
 > $ npx hardhat test
 
 # Details
