@@ -18,12 +18,12 @@ async function main() {
   });
 
   const mcdJoinSigner = await ethers.getSigner(mcdJoinAddress);
-  await network.provider.send('hardhat_setBalance', [mcdJoinAddress, ethers.utils.hexValue(ethers.utils.parseEther('1000'))]);
+  const setBal = await network.provider.send('hardhat_setBalance', [mcdJoinAddress, ethers.utils.hexValue(ethers.utils.parseEther('1000'))]);
   const daiContractImp = new ethers.Contract(daiAddress, daiAbi.abi, mcdJoinSigner);
-  await daiContractImp.mint(signer.address, ethers.utils.parseEther('100'));
+  const mint = await daiContractImp.mint(signer.address, ethers.utils.parseEther('100'));
+  await mint.wait();
   const balance = await daiContractImp.balanceOf(signer.address)
   console.log(`${ethers.utils.formatEther(balance)} DAI minted to ${signer.address}`);
-  console.log('balance', balance)
 
   await network.provider.request({
     method: "hardhat_stopImpersonatingAccount",
