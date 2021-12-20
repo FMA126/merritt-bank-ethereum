@@ -1,18 +1,18 @@
-import * as dotenv from "dotenv";
+import * as dotenv from 'dotenv';
 
-import { HardhatUserConfig, task } from "hardhat/config";
-import "@nomiclabs/hardhat-etherscan";
-import "@nomiclabs/hardhat-waffle";
-import "@typechain/hardhat";
-import "@openzeppelin/hardhat-upgrades";
-import "hardhat-gas-reporter";
-import "solidity-coverage";
+import { HardhatUserConfig, task } from 'hardhat/config';
+import '@nomiclabs/hardhat-etherscan';
+import '@nomiclabs/hardhat-waffle';
+import '@typechain/hardhat';
+import '@openzeppelin/hardhat-upgrades';
+import 'hardhat-gas-reporter';
+import 'solidity-coverage';
 
 dotenv.config();
 
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
-task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
+task('accounts', 'Prints the list of accounts', async (taskArgs, hre) => {
   const accounts = await hre.ethers.getSigners();
 
   for (const account of accounts) {
@@ -24,30 +24,30 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
 // Go to https://hardhat.org/config/ to learn more
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.4",
+  solidity: '0.8.4',
   networks: {
     hardhat: {
       forking: {
-        url: "https://eth-mainnet.alchemyapi.io/v2/VtXD9VCcBb7Z8AfnWfcINFAgoIrwwbYZ",
+        url: `https://eth-mainnet.alchemyapi.io/v2/${process.env.ALCHEMY_KEY}`,
         blockNumber: 13780385,
       },
       mining: {
         // Comment out all the mining config when testing
         interval: 5000,
         mempool: {
-          order: "fifo",
+          order: 'fifo',
         },
       },
     },
     ropsten: {
-      url: process.env.ROPSTEN_URL || "",
+      url: process.env.ROPSTEN_URL || '',
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
   },
   gasReporter: {
     enabled: process.env.REPORT_GAS !== undefined,
-    currency: "USD",
+    currency: 'USD',
   },
   etherscan: {
     apiKey: process.env.ETHERSCAN_API_KEY,
