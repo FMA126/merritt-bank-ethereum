@@ -1,6 +1,7 @@
 # Defi Yield Aggregator (Back End)
 
 Go here to see => [Front End](https://github.com/FMA126/merritt-bank-web-app)
+
 This project is an implementation of [dappuniversity](https://github.com/dappuniversity/yield-aggregator)'s project using a different techstack.
 
 This project is a simple decentrialized app where a user can deposit DAI into our smart contract. Once funds are deposited, the contract compares the interest rate of Compound & Aave, and deposits funds to whichever has the highest interest rate. The user can rebalance his/her funds to ensure that the funds are still currently in the higher interest rate protocol, and can also withdraw at any time.
